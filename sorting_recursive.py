@@ -25,12 +25,17 @@ def merge(items1, items2):
 def merge_sort(items):
     """Sort given items by splitting list into two approximately equal halves,
     sorting each recursively, and merging results into a list in sorted order.
-    TODO: Running time: ??? Why and under what conditions?
-    TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Check if list is so small it's already sorted (base case)
-    # TODO: Split items list into approximately equal halves
-    # TODO: Sort each half by recursively calling merge sort
-    # TODO: Merge sorted halves into one list in sorted order
+    TODO: Running time: Running time: Always O(n log n)  because it always splits the array in two  and takes linear time to merge them
+    TODO: Memory usage: O(n) space because it doesn't need more than O(n) space """
+    if len(items) < 2:
+        return items
+    mid = len(items) // 2  # // int division (rounds down)
+
+    left = items[:mid]
+    right = items[mid:]
+
+    items[:] = merge(merge_sort(left), merge_sort(right))
+    return items
 
 
 def partition(items, low, high):
@@ -38,8 +43,8 @@ def partition(items, low, high):
     `[low...high]` by choosing a pivot (TODO: document your method here) from
     that range, moving pivot into index `p`, items less than pivot into range
     `[low...p-1]`, and items greater than pivot into range `[p+1...high]`.
-    TODO: Running time: ??? Why and under what conditions?
-    TODO: Memory usage: ??? Why and under what conditions?"""
+    TODO: Running time: 
+    TODO: Memory usage:  """
     # TODO: Choose a pivot any way and document your method in docstring above
     # TODO: Loop through all items in range [low...high]
     # TODO: Move items less than pivot into front of range [low...p-1]
