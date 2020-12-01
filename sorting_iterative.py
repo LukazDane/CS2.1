@@ -61,7 +61,7 @@ def insertion_sort(items):
     # TODO: Repeat until all items are in sorted order
     # TODO: Take first unsorted item
     # TODO: Insert it in sorted order in front of items
-    print("Original: "+str(items))
+    # print("Original: "+str(items))
     while is_sorted(items) is False:
         for i in range(1, len(items)):
             x = items[i]
@@ -72,15 +72,15 @@ def insertion_sort(items):
                 y = y - 1
 
             items[y] = x  # insert
-    print("Insertion Sorted: " + str(items))
+    return str(items)
 
 
-items = [4, 8, 2, 16, 64, 32]
-items2 = [2, 4, 8, 16, 32, 64]
+# items = [4, 8, 2, 16, 64, 32]
+# items2 = [2, 4, 8, 16, 32, 64]
 # print(is_sorted(items))
-bubble_sort(items)
+# bubble_sort(items)
 # bubble_sort(items2)
-selection_sort(items)
+# selection_sort(items)
 # selection_sort(items2)
-insertion_sort(items)
+# insertion_sort(items)
 # insertion_sort(items2)

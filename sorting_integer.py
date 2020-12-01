@@ -1,3 +1,6 @@
+from sorting_iterative import insertion_sort
+
+
 def counting_sort(numbers):
     """Sort given numbers (integers) by counting occurrences of each number,
     then looping over counts and copying that many numbers into output list.
@@ -42,14 +45,37 @@ def bucket_sort(numbers, num_buckets=10):
     then sorting each bucket and concatenating all buckets in sorted order.
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
+
+    if len(numbers) <= 0:
+        return []
     # TODO: Find range of given numbers (minimum and maximum values)
+    maximum = max(numbers)
+    size = maximum/len(numbers)
     # TODO: Create list of buckets to store numbers in subranges of input range
+    buckets = []
+    for x in range(len(numbers)):
+        buckets.append([])
     # TODO: Loop over given numbers and place each item in appropriate bucket
+    for i in range(len(numbers)):
+        j = int(numbers[i] / size)
+        if j != len(numbers):
+            buckets[j].append(numbers[i])
+        else:
+            buckets[len(numbers) - 1].append(numbers[i])
     # TODO: Sort each bucket using any sorting algorithm (recursive or another)
+    for z in range(len(numbers)):
+        insertion_sort(buckets[z])
     # TODO: Loop over buckets and append each bucket's numbers into output list
+    output = []
+    for x in range(len(numbers)):
+        output = output + buckets[x]
+    return output
+
     # FIXME: Improve this to mutate input instead of creating new output list
 
 
 data = [4, 2, 2, 8, 3, 3, 1]
 print(counting_sort(data))
 print(counting_sort([]))
+print(bucket_sort(data))
+print(bucket_sort([]))
